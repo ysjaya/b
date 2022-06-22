@@ -69,4 +69,4 @@ async def _(event):
         await xx.delete()
     except Exception:
         await xx.edit("**Tidak bisa menemukan desahann.**")
-     **")
+
