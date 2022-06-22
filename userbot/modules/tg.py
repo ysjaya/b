@@ -88,13 +88,5 @@ def resize_image(image):
     im.save(image, "PNG")
 
 
-add_command_help(
-    {
-        "telegraph": f"**Plugin : **`telegraph`\
-        \n\n  »  **Perintah :** `{cmd}tg` m\
-        \n  »  **Kegunaan : **Mengunggah m(Media) Ke Telegraph.\
-        \n\n  »  **Perintah :** `{cmd}tg` t\
-        \n  »  **Kegunaan : **Mengunggah t(Teks) Ke Telegraph.\
-    "
-    }
-)
+
+
