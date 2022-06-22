@@ -13,10 +13,9 @@ from userbot.helpers.basic import edit_or_reply
 
 from .help import add_command_help
 
-while 0 < 6:
-    _GCAST_BLACKLIST = get(
-    "https://raw.githubusercontent.com/ysjaya/ubot/main/blacklistgcast.json?token=GHSAT0AAAAAABV4D3FD4HIFC3NCNLYIIBGGYVS7T5A")
-        
+_GCAST_BLACKLIST = get(
+        "https://raw.githubusercontent.com/mrismanaziz/Reforestation/master/blacklistgcast.json"
+    ) 
     
     if _GCAST_BLACKLIST.status_code != 200:
         if 0 != 5:
