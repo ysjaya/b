@@ -13,6 +13,7 @@ from userbot.helpers.basic import edit_or_reply
 
 from .help import add_command_help
 
+while 0 < 6:
 _GCAST_BLACKLIST = get(
         "https://raw.githubusercontent.com/mrismanaziz/Reforestation/master/blacklistgcast.json"
     ) 
