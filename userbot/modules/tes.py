@@ -4,7 +4,7 @@ from config import CMD_HANDLER as cmd
 
 
 @Client.on_message(filters.command(["help1"], cmd) & filters.me)
-async def help1_message(client: Client, message):
+async def help1(client: Client, message: Message):
   await message.reply_text(
       text="BayUserBot Modules",
       reply_markup=InlineKeyboardMarkup
