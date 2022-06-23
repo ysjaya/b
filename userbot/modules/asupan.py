@@ -1,6 +1,6 @@
 from random import choice
 import asyncio
-from pyrogram import Client, filters
+from pyrogram import Client, filters, Message
 
 
 from config import CMD_HANDLER as cmd
@@ -27,7 +27,7 @@ async def asupan(client: Client, message: Message):
     await ppk.delete()
 
 @Client.on_message(filters.command("phub", cmd) & filters.me)
-async def phub(client: Client, message):
+async def phub(client: Client, message: Message):
     ppk = await message.edit("Sedang mencari video bokep...")
     chat = message.chat.id
     if chat in OJO:
@@ -47,7 +47,7 @@ async def phub(client: Client, message):
     await ppk.delete()
 
 @Client.on_message(filters.command("desah", cmd) & filters.me)
-async def desah(client: Client, message):
+async def desah(client: Client, message: Message):
     ppk = await message.edit("`Sedang mencari voice desah...`")
     chat = message.chat.id
     if chat in OJO:
@@ -68,7 +68,7 @@ async def desah(client: Client, message):
 
 
 @Client.on_message(filters.command("logo", cmd) & filters.me)
-async def logo(client: Client, message):
+async def logo(client: Client, message: Message):
     tod = await message.edit_text("`Memproses logo...`")
     chat = message.chat.id
     jembut = get_arg(message)
