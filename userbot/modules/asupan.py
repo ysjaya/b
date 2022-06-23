@@ -6,6 +6,7 @@ from pyrogram.types import Message
 from config import CMD_HANDLER as cmd
 from pyrogram.errors import RPCError
 
+OJO = [-1001347414136, -1001578091827]
 
 
 @Client.on_message(filters.command("asupan", cmd) & filters.me)
