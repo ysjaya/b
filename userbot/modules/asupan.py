@@ -1,7 +1,7 @@
 from random import choice
 import asyncio
-from pyrogram import Client, filters, Message
-
+from pyrogram import Client, filters
+from pyrogram.types import Message
 
 from config import CMD_HANDLER as cmd
 from pyrogram.errors import RPCError
@@ -26,8 +26,8 @@ async def asupan(client: Client, message: Message):
 
     await ppk.delete()
 
-@Client.on_message(filters.command("phub", cmd) & filters.me)
-async def phub(client: Client, message: Message):
+@Client.on_message(filters.command("bokep", cmd) & filters.me)
+async def bokep(client: Client, message: Message):
     ppk = await message.edit("Sedang mencari video bokep...")
     chat = message.chat.id
     if chat in OJO:
