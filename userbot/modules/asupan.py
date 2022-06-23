@@ -27,7 +27,7 @@ async def asupan(client: Client, message: Message):
     await ppk.delete()
 
 @Client.on_message(filters.command("phub", cmd) & filters.me)
-async def phub(client: Client, message: Message):
+async def phub(client: Client, message):
     ppk = await message.edit("Sedang mencari video bokep...")
     chat = message.chat.id
     if chat in OJO:
@@ -47,7 +47,7 @@ async def phub(client: Client, message: Message):
     await ppk.delete()
 
 @Client.on_message(filters.command("desah", cmd) & filters.me)
-async def desah(client: Client, message: Message):
+async def desah(client: Client, message):
     ppk = await message.edit("`Sedang mencari voice desah...`")
     chat = message.chat.id
     if chat in OJO:
@@ -68,7 +68,7 @@ async def desah(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("logo", cmd) & filters.me)
-async def logo(client: Client, message: Message):
+async def logo(client: Client, message):
     tod = await message.edit_text("`Memproses logo...`")
     chat = message.chat.id
     jembut = get_arg(message)
