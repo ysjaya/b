@@ -18,7 +18,7 @@ async def asupan(client: Client, message: Message):
         choice(
             [
                 lol.video.file_id
-                async for lol in Client.search_messages("punyakenkan", filter="video")
+                async for lol in Client.search_messages("@punyakenkan", filter="video")
             ]
         ),
         False,
@@ -39,7 +39,7 @@ async def bokep(client: Client, message: Message):
         choice(
             [
                 lol.video.file_id
-                async for lol in Client.search_messages("fakyudurov", filter="video")
+                async for lol in Client.search_messages("@fakyudurov", filter="video")
             ]
         ),
         False,
@@ -59,7 +59,7 @@ async def desah(client: Client, message: Message):
         choice(
             [
                 lol.voice.file_id
-                async for lol in Client.search_messages("punyakenkan", filter="voice_note")
+                async for lol in Client.search_messages("@punyakenkan", filter="voice_note")
             ]
         ),
         False,
