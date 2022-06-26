@@ -110,8 +110,8 @@ async def leavevc(client: Client, message: Message):
         chat_id = int(chat_id)
     try:
         await client.group_call.stop()
-
-
+    except Exception as e:
+        return await Man.edit(f"**ERROR:** `{e}`")
     await Man.edit(f"❏ **Berhasil Turun dari Obrolan Suara**\n└ **Chat ID:** `{chat_id}`")
 
 
