@@ -138,7 +138,7 @@ bot5 = (
     else None
 )
 
-bot5 = (
+bot6 = (
     Client(
         session_name=STRING_SESSION6,
         api_id=API_ID,
@@ -149,7 +149,7 @@ bot5 = (
     else None
 )
 
-bot5 = (
+bot7 = (
     Client(
         session_name=STRING_SESSION7,
         api_id=API_ID,
@@ -160,7 +160,7 @@ bot5 = (
     else None
 )
 
-bot5 = (
+bot8 = (
     Client(
         session_name=STRING_SESSION8,
         api_id=API_ID,
@@ -171,7 +171,7 @@ bot5 = (
     else None
 )
 
-bot5 = (
+bot9 = (
     Client(
         session_name=STRING_SESSION9,
         api_id=API_ID,
@@ -182,7 +182,7 @@ bot5 = (
     else None
 )
 
-bot5 = (
+bot10 = (
     Client(
         session_name=STRING_SESSION10,
         api_id=API_ID,
@@ -193,7 +193,7 @@ bot5 = (
     else None
 )
 
-bots = [bot for bot in [bot1, bot2, bot3, bot4, bot5] if bot]
+bots = [bot for bot in [bot1, bot2, bot3, bot4, bot5, bot6, bot7, bot8, bot9, bot10,] if bot]
 
 for bot in bots:
     if not hasattr(bot, "group_call"):
