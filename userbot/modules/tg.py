@@ -6,7 +6,7 @@ from pyrogram.types import Message
 from .help import add_command_help
 from config import CMD_HANDLER as cmd
 
-@Client.on_message(filters.command(["tm", "tgm", "telegraph"], ".") & filters.me) 
+@Client.on_message(filters.command(["tm", "tgm", "telegraph"], cmd) & filters.me) 
 async def telegraph(client: Client, message: Message):
     replied = message.reply_to_message
     if not replied:
