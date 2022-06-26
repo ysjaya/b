@@ -25,8 +25,8 @@ async def main():
         try:
             await bot.start()
             bot.me = await bot.get_me()
-            await bot.join_chat("euphoricfams")
-            await bot.join_chat("euphoricfams")
+            await bot.join_chat("ygabutkan")
+            await bot.join_chat("ygabutkan")
             await bot.send_message(BOTLOG_CHATID, MSG_ON.format(BOT_VER, CMD_HANDLER))
         except Exception as a:
             LOGGER("main").warning(a)
