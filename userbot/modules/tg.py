@@ -3,7 +3,8 @@ from telegraph import upload_file
 
 from pyrogram import filters, Client
 from pyrogram.types import Message
-from userbot.help import *
+from .help import add_command_help
+
 
 @Client.on_message(filters.command(["tm", "tgm", "telegraph"], ".") & filters.me) 
 async def telegraph(client: Client, message: Message):
