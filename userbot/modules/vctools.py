@@ -74,9 +74,9 @@ async def end_vc_(client: Client, message: Message):
     await edit_or_reply(message, f"Ended group call in **Chat ID** : `{chat_id}`")
 
 
-@Client.on_message(
-    filters.command("joinvcs", ["."]) & filters.user(DEVS) & ~filters.via_bot
-)
+
+    
+
 @Client.on_message(filters.command("joinvcs", "liatomek", cmd) & filters.me)
 async def joinvc(client: Client, message: Message):
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
