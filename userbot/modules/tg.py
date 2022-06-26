@@ -43,10 +43,12 @@ async def telegraph(client: Client, message: Message):
     finally:
         os.remove(download_location)
 
-
 add_command_help(
-    "www",
+    "telegraph",
     [
-        [".tm", "Reply to Media as args to upload it to telegraph."],
+        [
+            f"{cmd}telegraph atau {cmd}tgm",
+            "Balas ke Pesan Teks atau Media untuk mengunggahnya ke telegraph.",
+        ],
     ],
 )
