@@ -102,8 +102,7 @@ async def joinvc(client: Client, message: Message):
 async def leavevc(client: Client, message: Message):
     try:
         await client.group_call.stop()
-    except Exception as e:
-        return await edit_or_reply(message, f"**ERROR:** `{e}`")
+    
     await edit_or_reply(
         message, f"❏ **Berhasil Turun dari Obrolan Suara**\n└ **Chat ID:** `{chat_id}`"
     )
