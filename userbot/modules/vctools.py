@@ -39,7 +39,7 @@ async def get_group_call(
 @Client.on_message(
     filters.command("startvcs", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["startvc"], cmd) & filters.me)
+@Client.on_message(filters.command(["startlipso"], cmd) & filters.me)
 async def opengc(client: Client, message: Message):
     flags = " ".join(message.command[1:])
     Man = await edit_or_reply(message, "`Processing...`")
@@ -60,7 +60,7 @@ async def opengc(client: Client, message: Message):
 
 
 @Client.on_message(filters.command("stopvcs", ["."]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.command(["stopvc"], cmd) & filters.me)
+@Client.on_message(filters.command(["bubar"], cmd) & filters.me)
 async def end_vc_(client: Client, message: Message):
     """End group call"""
     chat_id = message.chat.id
