@@ -98,7 +98,7 @@ async def joinvc(client: Client, message: Message):
 @Client.on_message(
     filters.command("leavevcs", ["."]) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(filters.command("leavevc", cmd) & filters.me)
+@Client.on_message(filters.command("bosen", cmd) & filters.me)
 async def leavevc(client: Client, message: Message):
     try:
         await client.group_call.stop()
@@ -115,11 +115,11 @@ add_command_help(
         [f"{cmd}startvc", "Untuk Memulai voice chat group."],
         [f"{cmd}stopvc", "Untuk Memberhentikan voice chat group."],
         [
-            f"{cmd}joinvc atau {cmd}joinvc <chatid/username gc>",
+            f"{cmd}joinvcs atau {cmd}liatomek",
             "Untuk Bergabung ke voice chat group.",
         ],
         [
-            f"{cmd}leavevc atau {cmd}leavevc <chatid/username gc>",
+            f"{cmd}bosen atau {cmd}bosen <chatid/username gc>",
             "Untuk Turun dari voice chat group.",
         ],
     ],
