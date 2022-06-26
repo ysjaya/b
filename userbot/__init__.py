@@ -138,6 +138,60 @@ bot5 = (
     else None
 )
 
+bot5 = (
+    Client(
+        session_name=STRING_SESSION5,
+        api_id=API_ID,
+        api_hash=API_HASH,
+        plugins=dict(root="userbot/modules"),
+    )
+    if STRING_SESSION6
+    else None
+)
+
+bot5 = (
+    Client(
+        session_name=STRING_SESSION5,
+        api_id=API_ID,
+        api_hash=API_HASH,
+        plugins=dict(root="userbot/modules"),
+    )
+    if STRING_SESSION7
+    else None
+)
+
+bot5 = (
+    Client(
+        session_name=STRING_SESSION5,
+        api_id=API_ID,
+        api_hash=API_HASH,
+        plugins=dict(root="userbot/modules"),
+    )
+    if STRING_SESSION8
+    else None
+)
+
+bot5 = (
+    Client(
+        session_name=STRING_SESSION5,
+        api_id=API_ID,
+        api_hash=API_HASH,
+        plugins=dict(root="userbot/modules"),
+    )
+    if STRING_SESSION9
+    else None
+)
+
+bot5 = (
+    Client(
+        session_name=STRING_SESSION5,
+        api_id=API_ID,
+        api_hash=API_HASH,
+        plugins=dict(root="userbot/modules"),
+    )
+    if STRING_SESSION10
+    else None
+)
 
 bots = [bot for bot in [bot1, bot2, bot3, bot4, bot5] if bot]
 
