@@ -82,7 +82,8 @@ async def incomingpm(client: Client, message: Message):
                         pass
 
                     await client.block_user(message.chat.id)
-    await ret.delete()
+    
+    
     message.continue_propagation()
     
 
@@ -123,6 +124,7 @@ async def approvepm(client: Client, message: Message):
         await message.edit(
             f"[{name0}](tg://user?id={uid}) mungkin sudah disetujui untuk PM."
         )
+    await ret.delete()
         return
 
 
