@@ -1,7 +1,8 @@
 from pyrogram import Client, filters
 from pyrogram.types import Message
 from sqlalchemy.exc import IntegrityError
-
+import asyncio
+import time
 from config import CMD_HANDLER as cmd
 from config import PM_AUTO_BAN
 from userbot import TEMP_SETTINGS
@@ -83,7 +84,8 @@ async def incomingpm(client: Client, message: Message):
 
                     await client.block_user(message.chat.id)
     
-    
+    await asyncio.sleep(6)
+    await DEF_UNAPPROVED_MSG.delete()
     message.continue_propagation()
     
 
@@ -125,6 +127,7 @@ async def approvepm(client: Client, message: Message):
             f"[{name0}](tg://user?id={uid}) mungkin sudah disetujui untuk PM."
         )
         return
+    await asyncio.sleep(6)
     await DEF_UNAPPROVED_MSG.delete()
 
 
