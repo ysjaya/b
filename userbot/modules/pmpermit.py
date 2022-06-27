@@ -31,8 +31,8 @@ async def incomingpm(client: Client, message: Message):
     else:
         if message.chat.id != 777000:
             try:
-                from ProjectMan.helpers.SQL.globals import gvarstatus
-                from ProjectMan.helpers.SQL.pm_permit_sql import is_approved
+                from userbot.helpers.SQL.globals import gvarstatus
+                from userbot.helpers.SQL.pm_permit_sql import is_approved
             except BaseException:
                 pass
 
@@ -91,7 +91,7 @@ async def incomingpm(client: Client, message: Message):
 )
 async def approvepm(client: Client, message: Message):
     try:
-        from ProjectMan.helpers.SQL.pm_permit_sql import approve
+        from userbot.helpers.SQL.pm_permit_sql import approve
     except BaseException:
         await message.edit("Running on Non-SQL mode!")
         return
@@ -130,7 +130,7 @@ async def approvepm(client: Client, message: Message):
 )
 async def disapprovepm(client: Client, message: Message):
     try:
-        from ProjectMan.helpers.SQL.pm_permit_sql import dissprove
+        from userbot.helpers.SQL.pm_permit_sql import dissprove
     except BaseException:
         await message.edit("Running on Non-SQL mode!")
         return
@@ -168,7 +168,7 @@ async def setpm_limit(client: Client, cust_msg: Message):
             f"**Anda Harus Menyetel Var** `PM_AUTO_BAN` **Ke** `True`\n\n**Bila ingin Mengaktifkan PMPERMIT Silahkan Ketik:** `{cmd}setvar PM_AUTO_BAN True`"
         )
     try:
-        from ProjectMan.helpers.SQL.globals import addgvar
+        from userbot.helpers.SQL.globals import addgvar
     except AttributeError:
         await cust_msg.edit("**Running on Non-SQL mode!**")
         return
@@ -197,7 +197,7 @@ async def setpmpermit(client: Client, cust_msg: Message):
             "**Anda Harus Menyetel Var** `PM_AUTO_BAN` **Ke** `True`\n\n**Bila ingin Mengaktifkan PMPERMIT Silahkan Ketik:** `.setvar PM_AUTO_BAN True`"
         )
     try:
-        import ProjectMan.helpers.SQL.globals as sql
+        import userbot.helpers.SQL.globals as sql
     except AttributeError:
         await cust_msg.edit("**Running on Non-SQL mode!**")
         return
@@ -220,7 +220,7 @@ async def get_pmermit(client: Client, cust_msg: Message):
             "**Anda Harus Menyetel Var** `PM_AUTO_BAN` **Ke** `True`\n\n**Bila ingin Mengaktifkan PMPERMIT Silahkan Ketik:** `.setvar PM_AUTO_BAN True`"
         )
     try:
-        import ProjectMan.helpers.SQL.globals as sql
+        import userbot.helpers.SQL.globals as sql
     except AttributeError:
         await cust_msg.edit("**Running on Non-SQL mode!**")
         return
@@ -242,7 +242,7 @@ async def reset_pmpermit(client: Client, cust_msg: Message):
             f"**Anda Harus Menyetel Var** `PM_AUTO_BAN` **Ke** `True`\n\n**Bila ingin Mengaktifkan PMPERMIT Silahkan Ketik:** `{cmd}setvar PM_AUTO_BAN True`"
         )
     try:
-        import ProjectMan.helpers.SQL.globals as sql
+        import userbot.helpers.SQL.globals as sql
     except AttributeError:
         await cust_msg.edit("**Running on Non-SQL mode!**")
         return
