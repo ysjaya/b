@@ -12,7 +12,7 @@ from userbot import TEMP_SETTINGS
 from .help import *
 
 
-DEF_UNAPPROVED_MSG = f"{client.me.mention} 𝐏𝐫𝐢𝐯𝐚𝐭𝐞 𝐏𝐫𝐨𝐭𝐞𝐜𝐭𝐢𝐨𝐧 🔱 \n\n"
+DEF_UNAPPROVED_MSG = f"{Client.me.mention} 𝐏𝐫𝐢𝐯𝐚𝐭𝐞 𝐏𝐫𝐨𝐭𝐞𝐜𝐭𝐢𝐨𝐧 🔱 \n\n"
 DEF_UNAPPROVED_MSG += f"◈ ━━━━━━ ◆ ━━━━━━ ◈ \n"
 DEF_UNAPPROVED_MSG += f"► ᴠᴇʀsɪᴏɴ : `Beta.0.1` \n"
 DEF_UNAPPROVED_MSG += f"► ᴘʏʀᴏ ᴠᴇʀsɪᴏɴ : `1.4.15` \n"
