@@ -82,6 +82,7 @@ async def incomingpm(client: Client, message: Message):
                         pass
 
                     await client.block_user(message.chat.id)
+    await ret.delete()
     message.continue_propagation()
     
 
