@@ -5,9 +5,8 @@ except ImportError:
 from sqlalchemy import Column
 from sqlalchemy.sql.sqltypes import Integer
 
-from config import PM_LIMIT
 
-warns = PM_LIMIT  # max number of warning for a user
+warns=5   # max number of warning for a user
 
 
 class User(BASE):
