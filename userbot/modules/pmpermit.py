@@ -77,10 +77,10 @@ async def incomingpm(client: Client, message: Message):
                         ):
                             ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
     await ret.delete()
-                            TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
+                            
                 else:
                     ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
-    await xx.delete()
+    await ret.delete()
                     if ret.text:
                         TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
 
