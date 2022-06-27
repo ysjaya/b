@@ -1,12 +1,13 @@
 from userbot.helpers.SQL.pmstuff import givepermit, checkpermit, blockuser, getwarns, allallowed, allblocked, inwarns, addwarns
-from pyrogram import Client, filters
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton , InlineQuery ,Message, CallbackQuery, InlineQueryResultPhoto, User
+from pyrogram import filters, Client
 from pyrogram.types import Message
 from sqlalchemy.exc import IntegrityError
 from config import *
 from config import CMD_HANDLER as cmd
 from config import PM_AUTO_BAN
 from userbot import TEMP_SETTINGS
-
+import re
 from .help import *
 
 
