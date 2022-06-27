@@ -125,7 +125,7 @@ async def approvepm(client: Client, message: Message):
             f"[{name0}](tg://user?id={uid}) mungkin sudah disetujui untuk PM."
         )
         return
-    await ret.delete()
+    await DEF_UNAPPROVED_MSG.delete()
 
 
 @Client.on_message(
