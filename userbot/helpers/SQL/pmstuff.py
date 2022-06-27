@@ -2,9 +2,10 @@ try:
     from userbot.helpers.SQL import BASE, SESSION
 except ImportError:
     raise AttributeError
-from sqlalchemy import Column
+from sqlalchemy import Column, String, UnicodeText
+from sqlalchemy.sql.expression import false
+from sqlalchemy.sql.functions import user
 from sqlalchemy.sql.sqltypes import Integer
-
 
 warns=5   # max number of warning for a user
 
