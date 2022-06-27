@@ -1,9 +1,9 @@
+
 from asyncio import sleep
 from pyrogram import filters
-from 
-from 
-from Prime.helpers.pyrohelper import get_arg
-
+from userbot
+from config import CMD_HANDLER as cmd
+from userbot.helpers.pyrohelper import get_arg
 
 
 
