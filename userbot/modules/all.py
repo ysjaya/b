@@ -8,7 +8,7 @@ from userbot.helpers.PyroHelpers import get_arg
 
 
 
-@app.on_message(filters.command("tagall", cmd) & filters.me)
+@Client.on_message(filters.command("tagall", cmd) & filters.me)
 async def mentionall(client, message):
     await message.delete()
     chat_id = message.chat.id
@@ -40,7 +40,7 @@ async def mentionall(client, message):
         pass
 
 
-@app.on_message(filters.command("cancel", cmd) & filters.me)
+@Client.on_message(filters.command("cancel", cmd) & filters.me)
 async def cancel_spam(client, message):
     if not message.chat.id in spam_chats:
         return await message.edit("__Sepertinya tidak ada tagall disini...__")
