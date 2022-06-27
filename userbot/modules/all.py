@@ -3,7 +3,7 @@ from asyncio import sleep
 from pyrogram import filters
 from .help import add_command_help
 from config import CMD_HANDLER as cmd
-from userbot.helpers.pyrohelper import get_arg
+from userbot.helpers.PyroHelpers import get_arg
 
 
 
