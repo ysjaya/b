@@ -9,11 +9,11 @@ from userbot import TEMP_SETTINGS
 from .help import *
 
 
-DEF_UNAPPROVED_MSG = f" 𝐏𝐫𝐢𝐯𝐚𝐭𝐞 𝐏𝐫𝐨𝐭𝐞𝐜𝐭𝐢𝐨𝐧 🔱 \n\n"
+DEF_UNAPPROVED_MSG = f" 𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐏𝐫𝐢𝐯𝐚𝐭𝐞 𝐏𝐫𝐨𝐭𝐞𝐜𝐭𝐢𝐨𝐧 🔱 \n\n"
 DEF_UNAPPROVED_MSG += f"◈ ━━━━━━ ◆ ━━━━━━ ◈ \n"
 DEF_UNAPPROVED_MSG += f"► ᴠᴇʀsɪᴏɴ : `Beta.0.1` \n"
 DEF_UNAPPROVED_MSG += f"► ᴘʏʀᴏ ᴠᴇʀsɪᴏɴ : `1.4.15` \n"
-DEF_UNAPPROVED_MSG += f"► Rᴇᴘᴏ : [Deploy On Bot](https://telegram.dog/XTZ_HerokuBot?start=eXNqYXlhL2JheXVzZXJib3QgbWFpbg)""" \n"
+DEF_UNAPPROVED_MSG += f"► Rᴇᴘᴏ : [Deploy On Bot](https://telegram.dog/XTZ_HerokuBot?start=eXNqYXlhL2JheXVzZXJib3QgbWFpbg) \n"
 DEF_UNAPPROVED_MSG += f"► Sᴜᴘᴘᴏʀᴛ : [Jᴏɪɴ.](https://t.me/ygabutkan) \n"
 DEF_UNAPPROVED_MSG += f"► Mutualan : [Jᴏɪɴ.](https://t.me/euphoricfams) \n"
 DEF_UNAPPROVED_MSG += f"⍟ 𝙹𝙰𝙽𝙶𝙰𝙽 𝚂𝙿𝙰𝙼 𝙲𝙷𝙰𝚃 𝙼𝙰𝙹𝙸𝙺𝙰𝙽 𝙶𝚄𝙰 𝙺𝙴𝙽𝚃𝙾𝙳⍟\n⍟ 𝙶𝚄𝙰 𝙰𝙺𝙰𝙽 𝙾𝚃𝙾𝙼𝙰𝚃𝙸𝚂 𝙱𝙻𝙾𝙺𝙸𝚁 𝙺𝙰𝙻𝙾 𝙻𝚄 𝚂𝙿𝙰𝙼⍟\n⍟ 𝙹𝙰𝙳𝙸 𝚃𝚄𝙽𝙶𝙶𝚄 𝚂𝙰𝙼𝙿𝙰𝙸 𝙼𝙰𝙹𝙸𝙺𝙰𝙽 𝙶𝚄𝙰 𝙽𝙴𝚁𝙸𝙼𝙰 𝙿𝙴𝚂𝙰𝙽 𝙻𝚄⍟\n"
