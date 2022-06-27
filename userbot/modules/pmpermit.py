@@ -85,7 +85,7 @@ async def incomingpm(client: Client, message: Message):
                     await client.block_user(message.chat.id)
     
     await asyncio.sleep(6)
-    await DEF_UNAPPROVED_MSG.delete()
+    await message.delete()
     message.continue_propagation()
     
 
@@ -128,7 +128,7 @@ async def approvepm(client: Client, message: Message):
         )
         return
     await asyncio.sleep(6)
-    await DEF_UNAPPROVED_MSG.delete()
+    await message.delete()
 
 
 @Client.on_message(
