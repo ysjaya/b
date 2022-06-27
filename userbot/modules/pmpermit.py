@@ -42,65 +42,41 @@ DEF_UNAPPROVED_MSG += f"◈ ━━━━━━ ◆ ━━━━━━ ◈ \n\n"
 @Client.on_message(
     ~filters.me & filters.private & ~filters.bot & filters.incoming, group=69
 )
-async def incomingpm(client: Client, message: Message):
-    if not PM_AUTO_BAN:
-        message.continue_propagation()
-    else:
-        if message.chat.id != 777000:
-            try:
-                from userbot.helpers.SQL.globals import gvarstatus
-                from userbot.helpers.SQL.pm_permit_sql import is_approved
-            except BaseException:
-                pass
-
-            PM_LIMIT = gvarstatus("PM_LIMIT") or 5
-            getmsg = gvarstatus("unapproved_msg")
-            if getmsg is not None:
-                UNAPPROVED_MSG = getmsg
-            else:
-                UNAPPROVED_MSG = DEF_UNAPPROVED_MSG
-
-            apprv = is_approved(message.chat.id)
-            if not apprv and message.text != UNAPPROVED_MSG:
-                if message.chat.id in TEMP_SETTINGS["PM_LAST_MSG"]:
-                    prevmsg = TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id]
-                    if message.text != prevmsg:
-                        async for message in client.search_messages(
-                            message.chat.id,
-                            from_user="me",
-                            limit=10,
-                            query=UNAPPROVED_MSG,
-                        ):
-                            await message.delete()
-                        if TEMP_SETTINGS["PM_COUNT"][message.chat.id] < (
-                            int(PM_LIMIT) - 1
-                        ):
-                            ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
-    await ret.delete()
-                            
-                
-                    if ret.text:
-                        TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
-
-                if message.chat.id not in TEMP_SETTINGS["PM_COUNT"]:
-                    TEMP_SETTINGS["PM_COUNT"][message.chat.id] = 1
-                else:
-                    TEMP_SETTINGS["PM_COUNT"][message.chat.id] = (
-                        TEMP_SETTINGS["PM_COUNT"][message.chat.id] + 1
-                    )
-
-                if TEMP_SETTINGS["PM_COUNT"][message.chat.id] > (int(PM_LIMIT) - 1):
-                    await message.reply("**Maaf anda Telah Di Blokir Karna Spam Chat**")
-
-                    try:
-                        del TEMP_SETTINGS["PM_COUNT"][message.chat.id]
-                        del TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id]
-                    except BaseException:
-                        pass
-
-                    await client.block_user(message.chat.id)
-
-    message.continue_propagation()
+async def incomingpm(client: Client, e: Message):
+  message = e
+  if checkpermit(message.chat.id):
+        print("sql is cringe here")
+        return
+  else:
+    print("gotit")
+    addwarns(message.chat.id)
+    gw= getwarns(message.chat.id)
+    teriu= message.from_user
+    teriun= teriu.id
+    teriuni= str(teriun)
+    teriunia="aprv_"+teriuni
+    teriunid="decine_"+teriuni
+    ids = 0
+  if isinstance(gw , str):
+      sb= await client.get_me()
+      un= LOG_GROUP
+  else:
+      keyboard= InlineKeyboardMarkup([  # First row
+                    InlineKeyboardButton(  # Generates a callback query when pressed
+                        "Approve",
+                        callback_data=teriunia
+                    ),
+                    InlineKeyboardButton(
+                        "Decline",
+                        callback_data=teriunid
+                    ),
+                ])
+      await message.reply_photo(photo=ALIVE_LOGO, caption=DEF_UNAPPROVED_MSG)
+      if gw==3:
+        await message.reply_text("You have crossed your warns so die")
+        await client.block_user(message.from_user.id)
+        blockuser(message.from_user.id)
+        return
 
 
 @Client.on_message(
