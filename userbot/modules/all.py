@@ -1,14 +1,14 @@
 
 from asyncio import sleep
 from pyrogram import filters
-from userbot
+from .help import add_command_help
 from config import CMD_HANDLER as cmd
 from userbot.helpers.pyrohelper import get_arg
 
 
 
 
-@app.on_message(filters.command("tagall", PREFIX) & filters.me)
+@app.on_message(filters.command("tagall", cmd) & filters.me)
 async def mentionall(client, message):
     await message.delete()
     chat_id = message.chat.id
@@ -40,7 +40,7 @@ async def mentionall(client, message):
         pass
 
 
-@app.on_message(filters.command("cancel", PREFIX) & filters.me)
+@app.on_message(filters.command("cancel", cmd) & filters.me)
 async def cancel_spam(client, message):
     if not message.chat.id in spam_chats:
         return await message.edit("__Sepertinya tidak ada tagall disini...__")
