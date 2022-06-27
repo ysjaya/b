@@ -75,10 +75,12 @@ async def incomingpm(client: Client, message: Message):
                         if TEMP_SETTINGS["PM_COUNT"][message.chat.id] < (
                             int(PM_LIMIT) - 1
                         ):
-                            ret = await message.reply_text(UNAPPROVED_MSG)
+                            ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
+    await ret.delete()
                             TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
                 else:
-                    ret = await message.reply_text(UNAPPROVED_MSG)
+                    ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
+    await xx.delete()
                     if ret.text:
                         TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
 
