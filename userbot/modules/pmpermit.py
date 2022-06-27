@@ -87,7 +87,7 @@ async def incomingpm(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command(["ok", "setuju", "approve"], cmd) & filters.me & filters.private
+    filters.command(["ok", "a", "approve"], cmd) & filters.me & filters.private
 )
 async def approvepm(client: Client, message: Message):
     try:
@@ -126,7 +126,7 @@ async def approvepm(client: Client, message: Message):
 
 
 @Client.on_message(
-    filters.command(["tolak", "nopm", "disapprove"], cmd) & filters.me & filters.private
+    filters.command(["tolak", "t", "disapprove"], cmd) & filters.me & filters.private
 )
 async def disapprovepm(client: Client, message: Message):
     try:
@@ -260,11 +260,11 @@ add_command_help(
     "pmpermit",
     [
         [
-            f"{cmd}ok atau {cmd}setuju",
+            f"{cmd}ok atau {cmd}a",
             "Menerima pesan seseorang dengan cara balas pesannya atau tag dan juga untuk dilakukan di pm",
         ],
         [
-            f"{cmd}tolak atau {cmd}nopm",
+            f"{cmd}tolak atau {cmd}t",
             "Menolak pesan seseorang dengan cara balas pesannya atau tag dan juga untuk dilakukan di pm",
         ],
         [
