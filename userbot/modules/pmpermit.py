@@ -82,7 +82,8 @@ async def incomingpm(client: Client, message: Message):
                         pass
 
                     await client.block_user(message.chat.id)
-
+    await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
+    await ret.delete()
     message.continue_propagation()
 
 
