@@ -61,7 +61,7 @@ async def incomingpm(client: Client, message: Message):
                             ret = await message.reply_text(UNAPPROVED_MSG)
                             TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
                 else:
-                    ret = await message.reply_text(UNAPPROVED_MSG)
+                    ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
                     if ret.text:
                         TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
 
@@ -82,8 +82,8 @@ async def incomingpm(client: Client, message: Message):
                         pass
 
                     await client.block_user(message.chat.id)
+    message.continue_propagation()
     
-    await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
 
 
 @Client.on_message(
