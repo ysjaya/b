@@ -52,10 +52,9 @@ async def incomingpm(client: Client, message: Message):
                         async for message in client.search_messages(
                             message.chat.id,
                             from_user="me",
-                            limit=10,
-                            query=UNAPPROVED_MSG,
+                            search=UNAPPROVED_MSG,
                         ):
-                            await prevmsg.delete()
+                            await message.delete()
                         if TEMP_SETTINGS["PM_COUNT"][message.chat.id] < (
                             int(PM_LIMIT) - 1
                         ):
