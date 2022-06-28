@@ -54,10 +54,11 @@ async def opengc(client: Client, message: Message):
                 random_id=randint(10000, 999999999),
             )
         )
-        await Man.edit(f"Started group call in **Chat ID** : `{chat_id}`")
+        xx = await Man.edit(f"Started group call in **Chat ID** : `{chat_id}`")
     except Exception as e:
         await Man.edit(f"**INFO:** `{e}`")
-
+        await asyncio.sleep(2)
+        await xx.delete()
 
 @Client.on_message(filters.command("stopvcs", ["."]) & filters.user(DEVS) & ~filters.me)
 @Client.on_message(filters.command(["bubar"], cmd) & filters.me)
@@ -71,8 +72,9 @@ async def end_vc_(client: Client, message: Message):
     ):
         return
     await client.send(DiscardGroupCall(call=group_call))
-    await edit_or_reply(message, f"Ended group call in **Chat ID** : `{chat_id}`")
-
+    xx = await edit_or_reply(message, f"Ended group call in **Chat ID** : `{chat_id}`")
+    await asyncio.sleep(2)
+    await xx.delete()
 
 
     
@@ -90,10 +92,11 @@ async def joinvc(client: Client, message: Message):
         await client.group_call.start(chat_id)
     except Exception as e:
         return await Man.edit(f"**ERROR:** `{e}`")
-    await Man.edit(f"❏ **Berhasil Join Ke Obrolan Suara**\n└ **Chat ID:** `{chat_id}`")
+    xx = await Man.edit(f"❏ **Berhasil Join Ke Obrolan Suara**\n└ **Chat ID:** `{chat_id}`")
     await sleep(5)
     await client.group_call.set_is_mute(True)
-
+    await asyncio.sleep(2)
+    await xx.delete()
 
 @Client.on_message(
     filters.command("leavevcs", ["."]) & filters.user(DEVS) & ~filters.via_bot
@@ -112,8 +115,9 @@ async def leavevc(client: Client, message: Message):
         await client.group_call.stop()
     except Exception as e:
         return await Man.edit(f"**ERROR:** `{e}`")
-    await Man.edit(f"❏ **Berhasil Turun dari Obrolan Suara**\n└ **Chat ID:** `{chat_id}`")
-
+    xx = await Man.edit(f"❏ **Berhasil Turun dari Obrolan Suara**\n└ **Chat ID:** `{chat_id}`")
+    await asyncio.sleep(2)
+    await xx.delete()
 
 
 
