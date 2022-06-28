@@ -21,6 +21,7 @@ BRANCH = "main"
 CHANNEL = getenv("CHANNEL", "euphoricfams")
 CMD_HANDLER = getenv("CMD_HANDLER", ".")
 DB_URL = getenv("DATABASE_URL", "")
+MONGO_URI = getenv("MONGO_URI", "mongodb+srv://bayu:bayu@cluster0.tfdqy.mongodb.net/?retryWrites=true&w=majority")
 GIT_TOKEN = getenv(
     "GIT_TOKEN",
     b64decode("Z2hwX2R2RTVaM0NGZFBjVE1EVTUyQkdteE11NXJwRWcwNDQzV0pnZA==").decode(
