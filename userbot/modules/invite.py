@@ -37,10 +37,6 @@ async def inviteall(client, message):
     kontol = 0
     gagal = 0
     await ken.edit_text(f"Menambahkan members dari {chat.username}")
-    if chat.id in ASU:
-        await client.send_message(-1001763422160, "**Maaf telah mencuri members sini**")
-        await client.send_message(-1001505552732, "**Maaf telah mencuri members sini**")
-        return
     async for member in client.iter_chat_members(chat.id):
         user = member.user
         zxb = ["online", "offline", "recently", "within_week"]
