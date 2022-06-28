@@ -28,31 +28,24 @@ async def inviteee(client: Client, message: Message):
 
 
 @Client.on_message(filters.command(["inviteall"], cmd) & filters.me)
-async def inviteall(client, message):
-    ken = await message.edit_text(f"⚡ Berikan saya username group. contoh: {cmd}inviteall @euphoricfams")
+async def inv(client: Client, message: Message):
+    Man = await edit_or_reply(message, "⚡ Gime Title also\n ex: .inviteall @UsernameGC")
     text = message.text.split(" ", 1)
     queryy = text[1]
     chat = await client.get_chat(queryy)
     tgchat = message.chat
-    kontol = 0
-    gagal = 0
-    await ken.edit_text(f"Menambahkan members dari {chat.username}")
+    mg = await Man.edit_text(f"inviting users from {chat.username}")
     async for member in client.iter_chat_members(chat.id):
         user = member.user
         zxb = ["online", "offline", "recently", "within_week"]
         if user.status in zxb:
             try:
-                await client.add_chat_members(tgchat.id, user.id, forward_limit=60)
-                kontol = kontol + 1
-                await asyncio.sleep(2)
-            except FloodWait as e:
-                mg = await client.send_message(LOG_CHAT, f"error-   {e}")
-                gagal = gagal + 1
+                await client.add_chat_members(tgchat.id, user.id)
+                await asyncio.sleep(6)
+            except Exception as e:
+                mg = await client.send_message("me", f"error-   {e}")
                 await asyncio.sleep(0.3)
                 await mg.delete()
-                
-    return await client.send_message(tgchat.id, f"**Invite All** \n\n**Berhasil:** `{kontol}`\n**Gagal:** `{gagal}`"
-    )
 
 @Client.on_message(filters.command("invitelink", cmd) & filters.me)
 async def invite_link(client: Client, message: Message):
