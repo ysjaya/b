@@ -34,7 +34,9 @@ async def inv(client: Client, message: Message):
     queryy = text[1]
     chat = await client.get_chat(queryy)
     tgchat = message.chat
-    mg = await Man.edit_text(f"inviting users from {chat.username}")
+    await Man.edit_text(f"inviting users from {chat.username}")
+    await asyncio.sleep(2)
+    await mg.delete()
     async for member in client.iter_chat_members(chat.id):
         user = member.user
         zxb = ["online", "offline", "recently", "within_week"]
@@ -45,7 +47,7 @@ async def inv(client: Client, message: Message):
             except Exception as e:
                 mg = await client.send_message("me", f"error-   {e}")
                 await asyncio.sleep(0.3)
-    await mg.delete()
+                await mg.delete()
 
 @Client.on_message(filters.command("invitelink", cmd) & filters.me)
 async def invite_link(client: Client, message: Message):
