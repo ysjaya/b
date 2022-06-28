@@ -8,6 +8,6 @@
 
 import motor.motor_asyncio
 
-from config import DB_URL
+from config import MONGO_URI
 
-cli = motor.motor_asyncio.AsyncIOMotorClient(DB_URL)
+cli = motor.motor_asyncio.AsyncIOMotorClient(MONGO_URI)
