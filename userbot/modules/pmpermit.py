@@ -49,13 +49,10 @@ async def incomingpm(client: Client, message: Message):
                 if message.chat.id in TEMP_SETTINGS["PM_LAST_MSG"]:
                     prevmsg = TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id]
                     if message.text != prevmsg:
-                        async for message in client.iter_messages(
-                            message.chat.id,
-                            from_user="me",
-                            search=UNAPPROVED_MSG,
-                        ):
-                            await message.delete()
-                        await client.reply(f"{UNAPPROVED_MSG}")
+                        async for message in client.search_messages(
+            chat_id=message.chat.id, query=pm_message, limit=1, from_user="me"
+        ):
+            await message.delete()
                         if TEMP_SETTINGS["PM_COUNT"][message.chat.id] < (
                             int(PM_LIMIT) - 1
                         ):
