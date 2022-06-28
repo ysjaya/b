@@ -63,6 +63,7 @@ async def incomingpm(client: Client, message: Message):
                             TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
                 else:
                     ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
+                    await message.delete()
                     if ret.text:
                         TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
 
@@ -72,7 +73,7 @@ async def incomingpm(client: Client, message: Message):
                     TEMP_SETTINGS["PM_COUNT"][message.chat.id] = (
                         TEMP_SETTINGS["PM_COUNT"][message.chat.id] + 1
                     )
-
+                            
                 if TEMP_SETTINGS["PM_COUNT"][message.chat.id] > (int(PM_LIMIT) - 1):
                     await message.reply("**Maaf anda Telah Di Blokir Karna Spam Chat**")
 
@@ -120,11 +121,12 @@ async def approvepm(client: Client, message: Message):
 
     try:
         approve(uid)
-        await message.edit(f"**Menerima Pesan Dari** [{name0}](tg://user?id={uid})!")
+        xx = await message.edit(f"**Menerima Pesan Dari** [{name0}](tg://user?id={uid})!")
     except IntegrityError:
         await message.edit(
             f"[{name0}](tg://user?id={uid}) mungkin sudah disetujui untuk PM."
         )
+        await xx.delete()
         return
     
 
