@@ -1,8 +1,16 @@
 
-
+from userbot.database.pmpermitdb import get_approved_users, pm_guard
 from pyrogram import Client
 from pyrogram.types import Message, User
 
+
+async def denied_users(filter, client: Client, message: Message):
+    if not await pm_guard():
+        return False
+    if message.chat.id in (await get_approved_users()):
+        return False
+    else:
+        return True
 
 async def get_ub_chats(
     client: Client,
