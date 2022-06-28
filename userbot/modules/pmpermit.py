@@ -127,10 +127,10 @@ async def approvepm(client: Client, message: Message):
         xx = await message.edit(
             f"[{name0}](tg://user?id={uid}) mungkin sudah disetujui untuk PM."
         )
-        return
+        
         await asyncio.sleep(3)
         await xx.delete()
-        
+        return
     
 
 
