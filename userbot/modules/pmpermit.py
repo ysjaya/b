@@ -1,6 +1,6 @@
 import os
 import asyncio
-from config import CMD_HANDLER as cmd
+from config import CMD_HANDLER as PREFIX
 from pyrogram import filters
 from pyrogram import Client as kontol
 from .help import add_command_help
