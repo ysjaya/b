@@ -27,11 +27,6 @@ DEF_UNAPPROVED_MSG += f"◈ ━━━━━━ ◆ ━━━━━━ ◈ \n\n"
     ~filters.me & filters.private & ~filters.bot & filters.incoming, group=69
 )
 async def incomingpm(client: Client, message: Message):
-    if not PM_AUTO_BAN:
-        
-    else:
-        if message.chat.id != 777000:
-            try:
                 from userbot.helpers.SQL.globals import gvarstatus
                 from userbot.helpers.SQL.pm_permit_sql import is_approved
             except BaseException:
@@ -74,7 +69,7 @@ async def incomingpm(client: Client, message: Message):
     
     
     
-    
+
 
 
 @Client.on_message(
