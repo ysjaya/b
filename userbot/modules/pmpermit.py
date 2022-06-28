@@ -55,7 +55,7 @@ async def incomingpm(client: Client, message: Message):
                             limit=10,
                             query=UNAPPROVED_MSG,
                         ):
-                            await message.delete()
+                        await message.delete()
                         if TEMP_SETTINGS["PM_COUNT"][message.chat.id] < (
                             int(PM_LIMIT) - 1
                         ):
@@ -63,7 +63,7 @@ async def incomingpm(client: Client, message: Message):
                             TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
                 else:
                     ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
-                    await asyncio.sleep(1)
+                    await asyncio.sleep(10)
                     await ret.delete()
                     if ret.text:
                         TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
@@ -76,7 +76,7 @@ async def incomingpm(client: Client, message: Message):
                     )
                             
                 if TEMP_SETTINGS["PM_COUNT"][message.chat.id] > (int(PM_LIMIT) - 1):
-                    await message.reply("**Maaf anda Telah Di Blokir Karna Spam Chat**")
+                    await message.reply("**DI BILANGIN JANGAN SPAM KOK NGEYEL**")
 
                     try:
                         del TEMP_SETTINGS["PM_COUNT"][message.chat.id]
@@ -127,9 +127,10 @@ async def approvepm(client: Client, message: Message):
         xx = await message.edit(
             f"[{name0}](tg://user?id={uid}) mungkin sudah disetujui untuk PM."
         )
-        await asyncio.sleep(1)
-        await xx.delete()
         return
+        await asyncio.sleep(3)
+        await xx.delete()
+        
     
 
 
