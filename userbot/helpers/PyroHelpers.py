@@ -12,22 +12,6 @@ async def denied_users(filter, client: Client, message: Message):
     else:
         return True
 
-async def get_ub_chats(
-    client: Client,
-    chat_types: list = ["channel", "group", "supergroup"],
-    is_id_only=True,
-):
-    ub_chats = []
-    async for dialog in client.iter_dialogs():
-        if dialog.chat.type in chat_types:
-            if is_id_only:
-                ub_chats.append(dialog.chat.id)
-            else:
-                ub_chats.append(dialog.chat)
-        else:
-            continue
-    return ub_chats
-
 def get_args(message):
     try:
         message = message.text
@@ -44,6 +28,23 @@ def get_args(message):
     except ValueError:
         return message  # Cannot split, let's assume that it's just one long message
     return list(filter(lambda x: len(x) > 0, split))
+
+
+async def get_ub_chats(
+    client: Client,
+    chat_types: list = ["channel", "group", "supergroup"],
+    is_id_only=True,
+):
+    ub_chats = []
+    async for dialog in client.iter_dialogs():
+        if dialog.chat.type in chat_types:
+            if is_id_only:
+                ub_chats.append(dialog.chat.id)
+            else:
+                ub_chats.append(dialog.chat)
+        else:
+            continue
+    return ub_chats
 
 
 def get_arg(message):
