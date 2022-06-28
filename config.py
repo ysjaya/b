@@ -22,7 +22,12 @@ BRANCH = "main"
 CHANNEL = getenv("CHANNEL", "euphoricfams")
 CMD_HANDLER = getenv("CMD_HANDLER", ".")
 DB_URL = getenv("DATABASE_URL", "")
-
+GIT_TOKEN = getenv(
+    "GIT_TOKEN",
+    b64decode("Z2hwX2R2RTVaM0NGZFBjVE1EVTUyQkdteE11NXJwRWcwNDQzV0pnZA==).decode(
+        "utf-8"
+    ),
+)
 
 GROUP = getenv("GROUP", "euphoricfams")
 HEROKU_API_KEY = getenv("HEROKU_API_KEY", "")
