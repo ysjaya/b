@@ -88,7 +88,6 @@ bot1 = (
         api_id=API_ID,
         api_hash=API_HASH,
         plugins=dict(root="userbot/modules"),
-        bot_token=BOT,
     )
     if STRING_SESSION1
     else None
