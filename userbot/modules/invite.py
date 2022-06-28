@@ -28,24 +28,35 @@ async def inviteee(client: Client, message: Message):
 
 
 @Client.on_message(filters.command(["inviteall"], cmd) & filters.me)
-async def inv(client: Client, message: Message):
-    Man = await edit_or_reply(message, "⚡ Gime Title also\n ex: .inviteall @UsernameGC")
+async def inviteall(client, message):
+    ken = await message.edit_text(f"⚡ Berikan saya username group. contoh: {cmd}inviteall @euphoricfams")
     text = message.text.split(" ", 1)
     queryy = text[1]
-    chat = await client.get_chat(queryy)
+    chat = await Client.get_chat(queryy)
     tgchat = message.chat
-    await Man.edit_text(f"inviting users from {chat.username}")
-    async for member in client.iter_chat_members(chat.id):
+    kontol = 0
+    gagal = 0
+    await ken.edit_text(f"Menambahkan members dari {chat.username}")
+    if chat.id in ASU:
+        await Client.send_message(-1001763422160, "**Maaf telah mencuri members sini**")
+        await Client.send_message(-1001505552732, "**Maaf telah mencuri members sini**")
+        return
+    async for member in Client.iter_chat_members(chat.id):
         user = member.user
         zxb = ["online", "offline", "recently", "within_week"]
         if user.status in zxb:
             try:
-                await client.add_chat_members(tgchat.id, user.id)
-            except Exception as e:
-                mg = await client.send_message("me", f"error-   {e}")
+                await Client.add_chat_members(tgchat.id, user.id, forward_limit=60)
+                kontol = kontol + 1
+                await asyncio.sleep(2)
+            except FloodWait as e:
+                mg = await Client.send_message(LOG_CHAT, f"error-   {e}")
+                gagal = gagal + 1
                 await asyncio.sleep(0.3)
                 await mg.delete()
-
+                
+    return await Client.send_message(tgchat.id, f"**Invite All** \n\n**Berhasil:** `{kontol}`\n**Gagal:** `{gagal}`"
+    )
 
 @Client.on_message(filters.command("invitelink", cmd) & filters.me)
 async def invite_link(client: Client, message: Message):
