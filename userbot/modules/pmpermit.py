@@ -90,7 +90,7 @@ async def allow(client, message):
     pmpermit, pm_message, limit, logo_pm, block_message = await Primedb.get_pm_settings()
     await Primedb.allow_user(chat_id)
     await message.edit(f"**Saya telah mengizinkan [Anda](tg://user?id={chat_id}) untuk PM saya.**")
-    async for message in kontol.search_messages(
+    async for message in client.search_messages(
         chat_id=message.chat.id, query=pm_message, limit=1, from_user="me"
     ):
         await message.delete()
@@ -125,7 +125,7 @@ async def reply_pm(client, message):
         else:
             FLOOD_CTRL = 0
             return
-        async for message in kontol.search_messages(
+        async for message in client.search_messages(
             chat_id=message.chat.id, query=pm_message, limit=1, from_user="me"
         ):
             await message.delete()
@@ -135,7 +135,7 @@ async def reply_pm(client, message):
             await message.reply_photo(logo_pm, caption=pm_message)
             return
     await message.reply(block_message, disable_web_page_preview=True)
-    await kontol.block_user(message.chat.id)
+    await client.block_user(message.chat.id)
     USERS_AND_WARNS.update({user: 0})
 
 
