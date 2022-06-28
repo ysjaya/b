@@ -13,7 +13,7 @@ from .help import *
 from pyrogram import filters, Client
 from .help import add_command_help
 import userbot.database.pmpermitdb as Primedb
-from config import cmd
+from config import *
 from userbot.helpers.PyroHelpers import denied_users, get_arg
 
 
