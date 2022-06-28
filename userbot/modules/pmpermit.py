@@ -56,22 +56,11 @@ async def incomingpm(client: Client, message: Message):
                         if TEMP_SETTINGS["PM_COUNT"][message.chat.id] < (
                             int(PM_LIMIT) - 1
                         ):
-                            ret = await message.reply_text(UNAPPROVED_MSG)
+                            await message.reply_text(UNAPPROVED_MSG)
                             TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
-                else:
-                    ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
-                    await asyncio.sleep(10)
-                    await ret.delete()
-                    if ret.text:
-                        TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
-
-                if message.chat.id not in TEMP_SETTINGS["PM_COUNT"]:
-                    TEMP_SETTINGS["PM_COUNT"][message.chat.id] = 1
-                else:
-                    TEMP_SETTINGS["PM_COUNT"][message.chat.id] = (
-                        TEMP_SETTINGS["PM_COUNT"][message.chat.id] + 1
-                    )
-                            
+                        else:
+                            await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
+                            return
                 if TEMP_SETTINGS["PM_COUNT"][message.chat.id] > (int(PM_LIMIT) - 1):
                     await message.reply("**DI BILANGIN JANGAN SPAM KOK NGEYEL**")
 
