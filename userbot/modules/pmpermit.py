@@ -63,7 +63,8 @@ async def incomingpm(client: Client, message: Message):
                             TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
                 else:
                     ret = await client.send_photo(message.chat.id, photo=ALIVE_LOGO, caption=UNAPPROVED_MSG)
-                          await message.delete()
+                    await asyncio.sleep(1)
+                    await ret.delete()
                     if ret.text:
                         TEMP_SETTINGS["PM_LAST_MSG"][message.chat.id] = ret.text
 
@@ -126,7 +127,7 @@ async def approvepm(client: Client, message: Message):
         xx = await message.edit(
             f"[{name0}](tg://user?id={uid}) mungkin sudah disetujui untuk PM."
         )
-        asyncio.sleep(1)
+        await asyncio.sleep(1)
         await xx.delete()
         return
     
