@@ -41,11 +41,11 @@ async def inv(client: Client, message: Message):
         if user.status in zxb:
             try:
                 await client.add_chat_members(tgchat.id, user.id)
-                await asyncio.sleep(6)
+                await asyncio.sleep(1)
             except Exception as e:
                 mg = await client.send_message("me", f"error-   {e}")
                 await asyncio.sleep(0.3)
-                await mg.delete()
+    await mg.delete()
 
 @Client.on_message(filters.command("invitelink", cmd) & filters.me)
 async def invite_link(client: Client, message: Message):
