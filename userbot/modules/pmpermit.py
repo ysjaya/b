@@ -1,20 +1,10 @@
-
+import os
+import asyncio
 from config import CMD_HANDLER as cmd
-from .help import *
-
-# Copyright (C) 2020-2021 by Toni880@Github, < https://github.com/Toni880 >.
-#
-# This file is part of < https://github.com/Toni880/Prime-Userbot > project,
-# and is released under the "GNU v3.0 License Agreement".
-# Please see < https://github.com/Toni880/Prime-Userbot/blob/master/LICENSE >
-#
-# All rights reserved.
-
 from pyrogram import filters
 from pyrogram import Client as kontol
 from .help import add_command_help
 import userbot.database.pmpermitdb as Primedb
-from config import *
 from userbot.helpers.PyroHelpers import denied_users, get_arg
 
 
@@ -22,9 +12,9 @@ from userbot.helpers.PyroHelpers import denied_users, get_arg
 FLOOD_CTRL = 0
 ALLOWED = []
 USERS_AND_WARNS = {}
+PM_LOGO = os.environ.get("PM_LOGO")
 
-
-@kontol.on_message(filters.command("pmguard", cmd) & filters.me)
+@kontol.on_message(filters.command("pmguard", PREFIX) & filters.me)
 async def pmguard(client, message):
     arg = get_arg(message)
     if not arg:
@@ -38,7 +28,7 @@ async def pmguard(client, message):
         await message.edit("**PM Guard Diaktifkan**")
 
 
-@kontol.on_message(filters.command("setlimit", cmd) & filters.me)
+@kontol.on_message(filters.command("setlimit", PREFIX) & filters.me)
 async def pmguard(client, message):
     arg = get_arg(message)
     if not arg:
@@ -46,17 +36,8 @@ async def pmguard(client, message):
         return
     await Primedb.set_limit(int(arg))
     await message.edit(f"**Batas disetel ke {arg}**")
-
-@kontol.on_message(filters.command("setlogopm", cmd) & filters.me)
-async def setpmlogo(client, message):
-    arg = get_arg(message)
-    if not arg:
-        await message.edit("**Tetapkan logo apa?**")
-        return
-    await Primedb.set_logo_pm(f"{arg}")
-    await message.edit(f"**Logo pm di setel [PM LOGO]({arg})**", disable_web_page_preview=True)
-
-@kontol.on_message(filters.command("setpmmsg", cmd) & filters.me)
+    
+@kontol.on_message(filters.command("setpmmsg", PREFIX) & filters.me)
 async def setpmmsg(client, message):
     arg = get_arg(message)
     if not arg:
@@ -70,7 +51,7 @@ async def setpmmsg(client, message):
     await message.edit("**Set pesan Anti-PM khusus**")
 
 
-@kontol.on_message(filters.command("setblockmsg", cmd) & filters.me)
+@kontol.on_message(filters.command("setblockmsg", PREFIX) & filters.me)
 async def setpmmsg(client, message):
     arg = get_arg(message)
     if not arg:
@@ -84,10 +65,10 @@ async def setpmmsg(client, message):
     await message.edit("**Set pesan blokir khusus**")
 
 
-@kontol.on_message(filters.command(["allow", "a"], cmd) & filters.me & filters.private)
+@kontol.on_message(filters.command(["allow", "a"], PREFIX) & filters.me & filters.private)
 async def allow(client, message):
     chat_id = message.chat.id
-    pmpermit, pm_message, limit, logo_pm, block_message = await Primedb.get_pm_settings()
+    pmpermit, pm_message, limit, block_message = await Primedb.get_pm_settings()
     await Primedb.allow_user(chat_id)
     await message.edit(f"**Saya telah mengizinkan [Anda](tg://user?id={chat_id}) untuk PM saya.**")
     async for message in client.search_messages(
@@ -97,7 +78,7 @@ async def allow(client, message):
     USERS_AND_WARNS.update({chat_id: 0})
 
 
-@kontol.on_message(filters.command(["deny", "d"], cmd) & filters.me & filters.private)
+@kontol.on_message(filters.command(["deny", "d"], PREFIX) & filters.me & filters.private)
 async def deny(client, message):
     chat_id = message.chat.id
     await Primedb.deny_user(chat_id)
@@ -114,7 +95,7 @@ async def deny(client, message):
 )
 async def reply_pm(client, message):
     global FLOOD_CTRL
-    pmpermit, pm_message, limit, block_message, logo_pm = await Primedb.get_pm_settings()
+    pmpermit, pm_message, limit, block_message = await Primedb.get_pm_settings()
     user = message.from_user.id
     user_warns = 0 if user not in USERS_AND_WARNS else USERS_AND_WARNS[user]
     if user_warns <= limit - 2:
@@ -129,10 +110,17 @@ async def reply_pm(client, message):
             chat_id=message.chat.id, query=pm_message, limit=1, from_user="me"
         ):
             await message.delete()
-        if not logo_pm:
+        if not PM_LOGO:
             await message.reply(pm_message, disable_web_page_preview=True)
         else:
-            await message.reply_photo(logo_pm, caption=pm_message)
+            ahh = client.send_video if PM_LOGO.endswith(".mp4") else client.send_photo
+            await asyncio.gather(
+                    ahh(
+                        message.chat.id,
+                        PM_LOGO,
+                        caption=pm_message
+                    ),
+                )
             return
     await message.reply(block_message, disable_web_page_preview=True)
     await client.block_user(message.chat.id)
