@@ -134,7 +134,7 @@ async def reply_pm(client: Client, message: Message):
             await message.reply_photo(logo_pm, caption=pm_message)
             return
     await message.reply(block_message, disable_web_page_preview=True)
-    await Client.block_user(message.chat.id)
+    await client.block_user(message.chat.id)
     USERS_AND_WARNS.update({user: 0})
 
 
