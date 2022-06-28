@@ -24,7 +24,7 @@ USERS_AND_WARNS = {}
 
 
 @Client.on_message(filters.command("pmguard", cmd) & filters.me)
-async def pmguard(client, message):
+async def pmguard(client: Client, message: Message):
     arg = get_arg(message)
     if not arg:
         await message.edit("**Saya hanya mengerti on atau off**")
@@ -38,7 +38,7 @@ async def pmguard(client, message):
 
 
 @Client.on_message(filters.command("setlimit", cmd) & filters.me)
-async def pmguard(client, message):
+async def pmguard(client: Client, message: Message):
     arg = get_arg(message)
     if not arg:
         await message.edit("**Tetapkan batas untuk apa?**")
@@ -47,7 +47,7 @@ async def pmguard(client, message):
     await message.edit(f"**Batas disetel ke {arg}**")
 
 @Client.on_message(filters.command("setlogopm", cmd) & filters.me)
-async def setpmlogo(client, message):
+async def setpmlogo(client: Client, message: Message):
     arg = get_arg(message)
     if not arg:
         await message.edit("**Tetapkan logo apa?**")
@@ -56,7 +56,7 @@ async def setpmlogo(client, message):
     await message.edit(f"**Logo pm di setel [PM LOGO]({arg})**", disable_web_page_preview=True)
 
 @Client.on_message(filters.command("setpmmsg", cmd) & filters.me)
-async def setpmmsg(client, message):
+async def setpmmsg(client: Client, message: Message):
     arg = get_arg(message)
     if not arg:
         await message.edit("**Pesan apa yang akan disetel**")
@@ -70,7 +70,7 @@ async def setpmmsg(client, message):
 
 
 @Client.on_message(filters.command("setblockmsg", cmd) & filters.me)
-async def setpmmsg(client, message):
+async def setpmmsg(client: Client, message: Message):
     arg = get_arg(message)
     if not arg:
         await message.edit("**Pesan apa yang akan disetel**")
@@ -84,7 +84,7 @@ async def setpmmsg(client, message):
 
 
 @Client.on_message(filters.command(["allow", "a"], cmd) & filters.me & filters.private)
-async def allow(client, message):
+async def allow(client: Client, message: Message):
     chat_id = message.chat.id
     pmpermit, pm_message, limit, logo_pm, block_message = await Primedb.get_pm_settings()
     await Primedb.allow_user(chat_id)
@@ -97,7 +97,7 @@ async def allow(client, message):
 
 
 @Client.on_message(filters.command(["deny", "d"], cmd) & filters.me & filters.private)
-async def deny(client, message):
+async def deny(client: Client, message: Message):
     chat_id = message.chat.id
     await Primedb.deny_user(chat_id)
     await message.edit(f"**Saya telah menolak [Anda](tg://user?id={chat_id}) untuk PM saya.**")
@@ -111,7 +111,7 @@ async def deny(client, message):
     & ~filters.me
     & ~filters.bot
 )
-async def reply_pm(client, message):
+async def reply_pm(client: Client, message: Message):
     global FLOOD_CTRL
     pmpermit, pm_message, limit, block_message, logo_pm = await Primedb.get_pm_settings()
     user = message.from_user.id
