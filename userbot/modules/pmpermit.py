@@ -28,7 +28,7 @@ DEF_UNAPPROVED_MSG += f"◈ ━━━━━━ ◆ ━━━━━━ ◈ \n\n"
 )
 async def incomingpm(client: Client, message: Message):
     if not PM_AUTO_BAN:
-        message.continue_propagation()
+        
     else:
         if message.chat.id != 777000:
             try:
@@ -84,7 +84,7 @@ async def incomingpm(client: Client, message: Message):
                     await client.block_user(message.chat.id)
     
     
-    message.continue_propagation()
+    
     
 
 
