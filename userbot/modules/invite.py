@@ -45,9 +45,8 @@ async def inv(client: Client, message: Message):
                 await client.add_chat_members(tgchat.id, user.id)
                 await asyncio.sleep(1)
             except Exception as e:
-                mg = await client.send_message("me", f"error-   {e}")
-                await asyncio.sleep(0.3)
-                await mg.delete()
+                await client.send_message("me", f"error-   {e}")
+                await message.delete()
 
 @Client.on_message(filters.command("invitelink", cmd) & filters.me)
 async def invite_link(client: Client, message: Message):
