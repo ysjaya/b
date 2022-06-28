@@ -12,7 +12,7 @@ from userbot.helpers.PyroHelpers import denied_users, get_arg
 FLOOD_CTRL = 0
 ALLOWED = []
 USERS_AND_WARNS = {}
-PM_LOGO = os.environ.get("PM_LOGO")
+PM_LOGO = os.environ.get("ALIVE_LOGO")
 
 @kontol.on_message(filters.command("pmguard", PREFIX) & filters.me)
 async def pmguard(client, message):
