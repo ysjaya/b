@@ -30,8 +30,8 @@ async def incomingpm(client: Client, message: Message):
      if not PM_AUTO_BAN:
         message.continue_propagation()
 
-    else:
-        if message.chat.id != 777000:
+     else:
+         if message.chat.id != 777000:
             try:
                 from userbot.helpers.SQL.globals import gvarstatus
                 from userbot.helpers.SQL.pm_permit_sql import is_approved
@@ -73,7 +73,7 @@ async def incomingpm(client: Client, message: Message):
 
                     await client.block_user(message.chat.id)
     
-    message.continue_propagation()
+     message.continue_propagation()
     
 
 
