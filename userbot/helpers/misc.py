@@ -53,10 +53,10 @@ def install_req(cmd: str) -> Tuple[str, str, int, int]:
 
 def git():
     REPO_LINK = REPO_URL
-    if GIT_TOKEN:
+    if REPO_LINK:
         GIT_USERNAME = REPO_LINK.split("com/")[1].split("/")[0]
         TEMP_REPO = REPO_LINK.split("https://")[1]
-        UPSTREAM_REPO = f"https://{GIT_USERNAME}:{GIT_TOKEN}@{TEMP_REPO}"
+        UPSTREAM_REPO = f"https://{GIT_USERNAME}@{TEMP_REPO}"
     else:
         UPSTREAM_REPO = REPO_URL
     try:
