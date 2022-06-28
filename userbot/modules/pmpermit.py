@@ -29,8 +29,6 @@ DEF_UNAPPROVED_MSG += f"◈ ━━━━━━ ◆ ━━━━━━ ◈ \n\n"
 async def incomingpm(client: Client, message: Message):
                 from userbot.helpers.SQL.globals import gvarstatus
                 from userbot.helpers.SQL.pm_permit_sql import is_approved
-            except BaseException:
-                pass
 
             PM_LIMIT = gvarstatus("PM_LIMIT") or 5
             getmsg = gvarstatus("unapproved_msg")
