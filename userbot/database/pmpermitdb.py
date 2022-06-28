@@ -29,7 +29,6 @@ BLOCKED = (
 )
 
 LIMIT = 5
-LOGO_PM = ALIVE_LOGO
 
 async def set_pm(value: bool):
     doc = {"_id": 1, "pmpermit": value}
@@ -46,9 +45,6 @@ async def set_pm(value: bool):
 
 async def set_permit_message(text):
     await collection.update_one({"_id": 1}, {"$set": {"pmpermit_message": text}})
-
-async def set_logo_pm(text):
-    await collection.update_one({"_id": 1}, {"$set": {"logo_pm": text}})
     
 async def set_block_message(text):
     await collection.update_one({"_id": 1}, {"$set": {"block_message": text}})
@@ -66,8 +62,7 @@ async def get_pm_settings():
     pm_message = result.get("pmpermit_message", PMPERMIT_MESSAGE)
     block_message = result.get("block_message", BLOCKED)
     limit = result.get("limit", LIMIT)
-    logo_pm = result.get("logo_pm", LOGO_PM)
-    return pmpermit, pm_message, limit, block_message, logo_pm
+    return pmpermit, pm_message, limit, block_message
 
 
 async def allow_user(chat):
