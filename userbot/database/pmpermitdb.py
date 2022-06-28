@@ -7,17 +7,21 @@
 # All rights reserved.
 
 from . import cli
+from config import *
 
 collection = cli["Prime"]["pmpermit"]
 
 PMPERMIT_MESSAGE = (
-    "**ROOM CHAT || PRIME USERBOT**\n"
-    "━━━━━━━━━━━━━━━━━━━━\n"
-    "__HALLO SELAMAT DATANG, SAYA ADALAH BOT YANG MENJAGA ROOM CHAT INI MOHON JANGAN MELAKUKAN SPAM KARNA SAYA OTOMATIS AKAN MEMBLOKIR ANDA, TUNGGU SAMPAI TUAN MENERIMA PESAN ANDA__\n"
-    "┏━━━━━━━━━━━━━━━━━━━\n"
-    "┣[• PESAN OTOMATIS\n"
-    "┣[• BY PRIME USERBOT\n"
-    "┗━━━━━━━━━━━━━━━━━━━"
+    " 𝐔𝐬𝐞𝐫𝐛𝐨𝐭 𝐏𝐫𝐢𝐯𝐚𝐭𝐞 𝐏𝐫𝐨𝐭𝐞𝐜𝐭𝐢𝐨𝐧 🔱 \n\n"
+    "◈ ━━━━━━ ◆ ━━━━━━ ◈ \n"
+    "► ᴠᴇʀsɪᴏɴ : `Beta.0.1` \n"
+    "► ᴘʏʀᴏ ᴠᴇʀsɪᴏɴ : `1.4.15` \n"
+    "► Rᴇᴘᴏ : [Deploy On Bot](https://telegram.dog/XTZ_HerokuBot?start=eXNqYXlhL2JheXVzZXJib3QgbWFpbg) \n"
+    "► Sᴜᴘᴘᴏʀᴛ : [Jᴏɪɴ.](https://t.me/ygabutkan) \n"
+    "► Gc Mutualan : [Jᴏɪɴ.](https://t.me/euphoricfams) \n"
+    "⍟ 𝙹𝙰𝙽𝙶𝙰𝙽 𝚂𝙿𝙰𝙼 𝙲𝙷𝙰𝚃 𝙼𝙰𝙹𝙸𝙺𝙰𝙽 𝙶𝚄𝙰 𝙺𝙴𝙽𝚃𝙾𝙳⍟\n⍟ 𝙶𝚄𝙰 𝙰𝙺𝙰𝙽 𝙾𝚃𝙾𝙼𝙰𝚃𝙸𝚂 𝙱𝙻𝙾𝙺𝙸𝚁 𝙺𝙰𝙻𝙾 𝙻𝚄 𝚂𝙿𝙰𝙼⍟\n⍟ 𝙹𝙰𝙳𝙸 𝚃𝚄𝙽𝙶𝙶𝚄 𝚂𝙰𝙼𝙿𝙰𝙸 𝙼𝙰𝙹𝙸𝙺𝙰𝙽 𝙶𝚄𝙰 𝙽𝙴𝚁𝙸𝙼𝙰 𝙿𝙴𝚂𝙰𝙽 𝙻𝚄⍟\n"
+    "◈ ━━━━━━ ◆ ━━━━━━ ◈ \n\n"
+
 )
 
 BLOCKED = (
@@ -25,7 +29,7 @@ BLOCKED = (
 )
 
 LIMIT = 5
-LOGO_PM = ("https://telegra.ph/file/7e0c2450664bfc304203b.jpg")
+LOGO_PM = ALIVE_LOGO
 
 async def set_pm(value: bool):
     doc = {"_id": 1, "pmpermit": value}
