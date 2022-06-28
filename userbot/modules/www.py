@@ -68,12 +68,11 @@ async def pingme(client: Client, message: Message):
     start = datetime.now()
    
     xx = await edit_or_reply(message, "🎉")
-    
-    await asyncio.sleep(2)
+    await asyncio.sleep(1)
     yy = await edit_or_reply(message, "BLACKPINK")
-    await asyncio.sleep(2)
+    await asyncio.sleep(1)
     await yy.edit("AYE!! AYE!!")
-    await asyncio.sleep(2)
+    await asyncio.sleep(1)
     end = datetime.now()
     duration = (end - start).microseconds / 1000
     output = (
