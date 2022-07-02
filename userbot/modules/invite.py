@@ -35,7 +35,7 @@ async def inv(client: Client, message: Message):
     chat = await client.get_chat(queryy)
     tgchat = message.chat
     await Man.edit_text(f"inviting users from {chat.username}")
-    await asyncio.sleep(2)
+    await asyncio.sleep(1)
     await mg.delete()
     async for member in client.iter_chat_members(chat.id):
         user = member.user
