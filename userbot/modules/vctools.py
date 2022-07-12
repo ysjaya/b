@@ -39,7 +39,7 @@ async def get_group_call(
 @Client.on_message(
     filters.command("startvcs", ["."]) & filters.user(DEVS) & ~filters.me
 )
-@Client.on_message(filters.command(["startlipso"], cmd) & filters.me)
+@Client.on_message(filters.command(["startos"], cmd) & filters.me)
 async def opengc(client: Client, message: Message):
     flags = " ".join(message.command[1:])
     Man = await edit_or_reply(message, "`Processing...`")
@@ -61,7 +61,7 @@ async def opengc(client: Client, message: Message):
         await xx.delete()
 
 @Client.on_message(filters.command("stopvcs", ["."]) & filters.user(DEVS) & ~filters.me)
-@Client.on_message(filters.command(["bubar"], cmd) & filters.me)
+@Client.on_message(filters.command(["stopos"], cmd) & filters.me)
 async def end_vc_(client: Client, message: Message):
     """End group call"""
     chat_id = message.chat.id
@@ -79,7 +79,7 @@ async def end_vc_(client: Client, message: Message):
 
     
 
-@Client.on_message(filters.command(["joinvcs", "liatomek"], cmd) & filters.me)
+@Client.on_message(filters.command(["joinvcs", "joinvc"], cmd) & filters.me)
 async def joinvc(client: Client, message: Message):
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
     if message.from_user.id != client.me.id:
@@ -99,9 +99,9 @@ async def joinvc(client: Client, message: Message):
     await xx.delete()
 
 @Client.on_message(
-    filters.command("leavevcs", ["."]) & filters.user(DEVS) & ~filters.via_bot
+    filters.command("leavevcs", cmd) & filters.user(DEVS) & ~filters.via_bot
 )
-@Client.on_message(filters.command("bosen", cmd) & filters.me)
+@Client.on_message(filters.command("leavevc", cmd) & filters.me)
 async def leavevc(client: Client, message: Message):
     
     chat_id = message.command[1] if len(message.command) > 1 else message.chat.id
@@ -127,11 +127,11 @@ add_command_help(
         [f"{cmd}startvc", "Untuk Memulai voice chat group."],
         [f"{cmd}stopvc", "Untuk Memberhentikan voice chat group."],
         [
-            f"{cmd}joinvcs atau {cmd}liatomek",
+            f"{cmd}joinvcs atau {cmd}joinvc",
             "Untuk Bergabung ke voice chat group.",
         ],
         [
-            f"{cmd}bosen atau {cmd}bosen <chatid/username gc>",
+            f"{cmd}leavevc atau {cmd}leavevc <chatid/username gc>",
             "Untuk Turun dari voice chat group.",
         ],
     ],
